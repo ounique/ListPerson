@@ -7,18 +7,18 @@ public class Person {
     private static int counter = -1;
     private LocalDate date;
     private int id;
-    private String LastName;
+    private String lastName;
 
     /**
      * Constructror which include last name and name of a person.
      * Id would be setting automaticaly.
-     * @param LastName Last name of a persnon.
+     * @param lastName astName Last name of a persnon.
      * @param date Date of birthday person.
      */
-    public Person(String LastName, LocalDate date)
+    public Person(String lastName, LocalDate date)
     {
         this.date = date;
-        this.LastName = LastName;
+        this.lastName = lastName;
         this.id = ++counter;
     }
 
@@ -27,7 +27,7 @@ public class Person {
      * @return Surname of person.
      */
     public String getLastName() {
-        return  LastName;
+        return  lastName;
     }
 
     /**
