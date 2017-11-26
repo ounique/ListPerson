@@ -62,4 +62,9 @@ public class List {
         }
         return "Пользователь с id:" + id + " отсутсвует в списке.";
     }
+
+    public int sort(PersonComparator comparator)
+    {
+       return comparator.comprareTo(humans[0], humans[0]);
+    }
 }
