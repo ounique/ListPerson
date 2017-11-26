@@ -30,6 +30,10 @@ public class Person {
         return  lastName;
     }
 
+    public String getInfo(){
+        return "id: " + id + " Name: " + lastName + " Birthday: " + date.toString();
+    }
+
     /**
      *
      * @return Personal user id.
