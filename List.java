@@ -63,11 +63,20 @@ public class List {
         return "Пользователь с id:" + id + " отсутсвует в списке.";
     }
 
+    /**
+     * Sort array of person by personSort method and comrare by comparator.
+     * @param comparator
+     * @param personSort person sort method.
+     */
     public void sort(PersonComparator comparator, PersonSort personSort) {
        personSort.sort(humans, comparator);
     }
 
+    /**
+     * Print info about all persons in list.
+     */
     public void print() {
-
+        for (int i = 0; i < length; i++)
+            System.out.println(humans[i].getInfo());
     }
 }

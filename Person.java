@@ -1,5 +1,4 @@
 package main;
-
 import org.joda.time.LocalDate;
 
 public class Person {
@@ -30,6 +29,10 @@ public class Person {
         return  lastName;
     }
 
+    /**
+     * Give info about user id, last name and birthday.
+     * @return Info about user.
+     */
     public String getInfo(){
         return "id: " + id + " Name: " + lastName + " Birthday: " + date.toString();
     }
@@ -54,7 +57,7 @@ public class Person {
      *
      * @return Age at now.
      */
-    public int GetCurrentAge() {
+    public int getCurrentAge() {
         return LocalDate.now().getDayOfYear() > date.getDayOfYear() ? LocalDate.now().getYear() - date.getYear() : LocalDate.now().getYear() - date.getYear() - 1;
     }
 }
