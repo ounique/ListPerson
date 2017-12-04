@@ -1,13 +1,16 @@
-package main;
+package main.comparators;
 
-public class ComparatorById extends PersonComparator{
+import main.Person;
+
+public class ComparatorById implements PersonComparator {
     /**
      * Comprare persons by ID
      * @param a
      * @param b
      * @return
      */
-    public int comprareTo(Person a, Person b){
+    @Override
+    public int compare(Person a, Person b){
         if (a == null)
             return -1;
         if (b == null)

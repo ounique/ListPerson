@@ -3,7 +3,6 @@ import org.joda.time.LocalDate;
 
 public class Person {
 
-    private static int counter = -1;
     private LocalDate date;
     private int id;
     private String lastName;
@@ -14,11 +13,11 @@ public class Person {
      * @param lastName astName Last name of a persnon.
      * @param date Date of birthday person.
      */
-    public Person(String lastName, LocalDate date)
+    public Person(String lastName, LocalDate date, int id)
     {
         this.date = date;
         this.lastName = lastName;
-        this.id = ++counter;
+        this.id = id;
     }
 
     /**

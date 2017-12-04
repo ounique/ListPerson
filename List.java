@@ -1,10 +1,20 @@
 package main;
+import main.checker.PersonChecker;
+import main.comparators.PersonComparator;
+import main.sort.PersonSort;
+import org.joda.time.LocalDate;
+
+import java.io.IOException;
 import java.util.Arrays;
 
 public class List {
 
+    private static int counter = -1;
     private int length = 0;
     private Person[] humans = new Person[10];
+    private PersonComparator comparator;
+    private PersonSort sortMethod;
+    private PersonChecker checker;
 
     /**
      * @return Count of elements in list.
@@ -15,9 +25,11 @@ public class List {
 
     /**
      * Add person into list.
-     * @param person the array to be copies
+     * @param lastName Surname of person.
+     * @param date Birthday of person.
      */
-    public void addPerson(Person person) {
+    public void addPerson(String lastName, LocalDate date){
+        Person person = new Person(lastName, date, ++counter);
         if (length == humans.length)
         {
             int len = humans.length;
@@ -31,6 +43,11 @@ public class List {
                     break;
                 }
         length++;
+        try {
+            Configurator.getComparator();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -75,8 +92,10 @@ public class List {
     /**
      * Print info about all persons in list.
      */
-    public void print() {
+    public Person[] print() {
+        Person[] persons = new Person[length];
         for (int i = 0; i < length; i++)
-            System.out.println(humans[i].getInfo());
+            persons[i] = humans[i];
+        return persons;
     }
 }
