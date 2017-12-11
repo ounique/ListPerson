@@ -1,8 +1,8 @@
 package main.comparators;
 
-import main.Person;
+import main.essences.Person;
 
-public class ComparatorById implements PersonComparator {
+public class ComparatorById implements IComparator<Person> {
     /**
      * Comprare persons by ID
      * @param a
@@ -12,11 +12,11 @@ public class ComparatorById implements PersonComparator {
     @Override
     public int compare(Person a, Person b){
         if (a == null)
-            return -1;
+            throw new NullPointerException();
         if (b == null)
-            return 1;
+            throw new NullPointerException();
         if (a == null && b == null)
-            return 0;
+            throw new NullPointerException();
         return a.getId() > b.getId() ? 1 :(a.getId() == b.getId() ? 0 : -1);
     }
 }

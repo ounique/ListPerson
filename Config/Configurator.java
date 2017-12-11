@@ -1,6 +1,8 @@
-package main;
-import main.comparators.PersonComparator;
-import main.sort.PersonSort;
+package main.Config;
+
+import main.checker.IChecker;
+import main.comparators.IComparator;
+import main.sort.ISorter;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,7 +12,7 @@ public class Configurator {
 
     public static final String PATH_TO_PROPERTIES = "src/main/resources/config.properties";
 
-    public static PersonComparator getComparator() throws IOException {
+    public static IComparator getComparator() throws IOException {
         FileInputStream fileInputStream;
         Properties properties = new Properties();
 
@@ -19,7 +21,10 @@ public class Configurator {
         String sorter = properties.getProperty("sort");
         return null;
     }
-    public static PersonSort getSorter(){
+    public static ISorter getSorter(){
+        return null;
+    }
+    public static IChecker getChecker(){
         return null;
     }
 }

@@ -1,4 +1,4 @@
-package main;
+package main.essences;
 import org.joda.time.LocalDate;
 
 public class Person {

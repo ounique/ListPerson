@@ -1,25 +1,19 @@
 package main.sort;
 
-import main.Person;
-import main.comparators.PersonComparator;
+import main.comparators.IComparator;
 
-public class BubleSort implements PersonSort {
-    /**
-     * Sort array persons by comparator settings.
-     * @param persons Array of Persons
-     * @param comparator Exemplar of PersonComparator, which tells how comprare two persons.
-     */
+public class BubleSort<T> implements ISorter<T> {
     @Override
-    public void sort(Person[] persons, PersonComparator comparator) {
-        Person temp;
-        int length = persons.length;
+    public void sort(T[] array, IComparator<T> comparator) {
+        T temp;
+        int length = array.length;
         for (int i = 0; i < length; i++) {
             for (int j = 1; j < (length - i); j++) {
-                if (comparator.compare(persons[j - 1], persons[j]) == -1) {
+                if (comparator.compare(array[j - 1], array[j]) == -1) {
                     //swap elements
-                    temp = persons[j - 1];
-                    persons[j - 1] = persons[j];
-                    persons[j] = temp;
+                    temp = array[j - 1];
+                    array[j - 1] = array[j];
+                    array[j] = temp;
                 }
             }
         }

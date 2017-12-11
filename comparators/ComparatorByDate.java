@@ -1,8 +1,8 @@
 package main.comparators;
 
-import main.Person;
+import main.essences.Person;
 
-public class ComparatorByDate implements PersonComparator {
+public class ComparatorByDate implements IComparator<Person> {
     /**
      * Comprare two exemplars of Person class.
      * @param a
@@ -12,11 +12,11 @@ public class ComparatorByDate implements PersonComparator {
     @Override
     public int compare(Person a, Person b) {
         if (a == null)
-            return -1;
+            throw new NullPointerException();
         if (b == null)
-            return 1;
+            throw new NullPointerException();
         if (a == null && b == null)
-            return 0;
+            throw new NullPointerException();
         return a.getDate().compareTo(b.getDate());
     }
 }

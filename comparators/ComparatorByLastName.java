@@ -1,8 +1,8 @@
 package main.comparators;
 
-import main.Person;
+import main.essences.Person;
 
-public class ComparatorByLastName implements PersonComparator {
+public class ComparatorByLastName implements IComparator<Person> {
     /**
      * Comprare two exemplars of Person class by person comporator settings.
      * @param a
@@ -12,11 +12,11 @@ public class ComparatorByLastName implements PersonComparator {
     @Override
     public int compare(Person a, Person b){
         if (a == null)
-            return -1;
+            throw new NullPointerException();
         if (b == null)
-            return 1;
+            throw new NullPointerException();
         if (a == null && b == null)
-            return 0;
+            throw new NullPointerException();
         int length = a.getLastName().length() > b.getLastName().length() ? b.getLastName().length() : a.getLastName().length();
         char[] arrayFirst = a.getLastName().toCharArray();
         char[] arraySecond = b.getLastName().toCharArray();
