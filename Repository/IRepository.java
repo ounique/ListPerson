@@ -1,9 +1,9 @@
 package main.Repository;
-
 public interface IRepository<T>{
+    int size();
     void remove(Object value);
-    void add(Object value);
+    void add(T value);
     void sort();
-    T[] search(Object value);
-    T[] getRepository();
+    boolean contains(Object value);
+    T[] toArray(T[] a);
 }

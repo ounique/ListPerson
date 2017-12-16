@@ -1,26 +1,60 @@
 package main;
+
+import main.Repository.CarRepository;
+import main.Repository.PersonRepository;
+import main.essences.Car;
 import main.essences.Person;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.joda.time.LocalDate;
+
+import java.io.IOException;
+
 
 public class Main {
 
-    public static void main(String[] args) {
-        List list = new List();
-        list.addPerson("Eugene Karpova", new LocalDate(1998, 5, 18));
-        list.addPerson("Eugene Karpov", new LocalDate(1998, 5, 18));
-        list.addPerson("Artem Azarov", new LocalDate(1998, 10, 7));
-        Person[] temp = list.getHumans();
-        for (int i = 0; i < temp.length; i++)
-            System.out.println(temp[i].getInfo());
-        System.out.println();
-        list.sort();
-        temp = list.getHumans();
-        for (int i = 0; i < temp.length; i++)
-            System.out.println(temp[i].getInfo());
-        System.out.println();
 
-        Person[] aa = list.contains(new LocalDate(1998, 05, 18)).getHumans();
-        for (int i = 0; i < aa.length; i++)
-            System.out.println(aa[i].getInfo());
+    private static Logger log = LogManager.getLogger(Main.class.getName());
+
+    public static void main(String[] args) throws IOException {
+
+        PersonRepository a = new PersonRepository();
+        Person temp = new Person("Карпов Евгений", new LocalDate(1998, 10, 10), 0);
+        a.add(temp);
+        log.info("Add into list person - " + temp.getInfo());
+        temp = new Person("Сигарев Алексей", new LocalDate(2000, 7, 20), 1);
+        a.add(temp);
+        log.info("Add into list person - " + temp.getInfo());
+        temp = new Person("Артем Азаров", new LocalDate(1996, 10, 5), 2);
+        a.add(temp);
+        log.info("Add into list person - " + temp.getInfo());
+
+        Person[] b = a.toArray(new Person[1]);
+        for(int i = 0; i < b.length; i++){
+            System.out.println(b[i].getInfo());
+        }
+        a.sort();
+        log.info("Sort collection PersonRepository");
+        Person[] c = a.toArray(new Person[1]);
+        for(int i = 0; i < c.length; i++){
+            System.out.println(c[i].getInfo());
+        }
+
+        CarRepository car = new CarRepository();
+        Car temp2 = new Car("e750kx", "bip-bip", 4);
+        car.add(temp2);
+        log.info("Add into CarRepository - " + temp.getInfo());
+        temp2 = new Car("a001aa", "tu-tu", 3);
+        car.add(temp2);
+        log.info("Add into CarRepository - " + temp.getInfo());
+        temp2 = new Car("e666ee", "bip-bip", 4);
+        car.add(temp2);
+        log.info("Add into CarRepository - " + temp.getInfo());
+        car.sort();
+        log.info("Sort collection CarRepository");
+        Car[] arr = car.toArray(new Car[1]);
+        for(int i = 0; i < arr.length; i++){
+            System.out.println(arr[i].getInfo());
+        }
     }
 }

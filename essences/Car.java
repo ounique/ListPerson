@@ -5,38 +5,37 @@ public class Car {
     private String number;
     private String sound;
     private int countWheels;
-    private boolean isNew;
 
+    /**
+     *
+     * @param number Number of car
+     * @param sound Sound when car is ringing
+     * @param countWheels Count of wheels of car
+     */
+    public Car(String number, String sound, int countWheels) {
+        this.number = number;
+        this.sound = sound;
+        this.countWheels = countWheels;
+    }
+
+    /**
+     *
+     * @return All info about user.
+     */
+    public String getInfo(){
+        return "Номер: " + number + " Звук: " + sound + " Кол-во колес: " + countWheels;
+    }
 
     public String getNumber() {
         return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
     }
 
     public String getSound() {
         return sound;
     }
 
-    public void setSound(String sound) {
-        this.sound = sound;
-    }
-
     public int getCountWheels() {
         return countWheels;
     }
 
-    public void setCountWheels(int countWheels) {
-        this.countWheels = countWheels;
-    }
-
-    public boolean isNew() {
-        return isNew;
-    }
-
-    public void setNew(boolean aNew) {
-        isNew = aNew;
-    }
 }

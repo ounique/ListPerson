@@ -1,28 +1,30 @@
 package main.Repository;
-public class PersonRepository<Person> extends Repository<Person>{
+import main.Config.Configurator;
+import main.essences.Person;
+
+import java.io.IOException;
+
+public class PersonRepository extends Repository<Person>{
 
     @Override
     public void remove(Object value) {
-
+        removeById((Integer) value);
     }
 
-    @Override
-    public void add(Object value) {
-
+    public PersonRepository() throws IOException {
+        sorter = Configurator.getPersonSorter();
+        comparator = Configurator.getPersonComparator();
+        checker = Configurator.getPersonChecker();
     }
 
-    @Override
-    public void sort() {
-
-    }
-
-    @Override
-    public Person[] search(Object value) {
-        return null;
-    }
-
-    @Override
-    public Person[] getRepository() {
-        return null;
+    private void removeById(int value){
+        for (int i = 0; i < length; i++) {
+            if (((Person)array[i]).getId() == value){
+                for (int j = i; j < array.length - 1; j++)
+                    array[j] = array[j+1];
+                array[array.length - 1] = null;
+                length--;
+            }
+        }
     }
 }

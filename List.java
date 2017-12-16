@@ -1,8 +1,7 @@
 package main;
 
-import main.Config.Configurator;
 import main.checker.CheckerByDate;
-import main.checker.PersonChecker;
+import main.checker.IChecker;
 import main.comparators.ComparatorByDate;
 import main.comparators.IComparator;
 import main.essences.Person;
@@ -10,7 +9,6 @@ import main.sort.BubleSort;
 import main.sort.ISorter;
 import org.joda.time.LocalDate;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 public class List {
@@ -20,7 +18,7 @@ public class List {
     private Person[] humans = new Person[10];
     private IComparator<Person> comparator = new ComparatorByDate();
     private ISorter<Person> sortMethod = new BubleSort();
-    private PersonChecker checker = new CheckerByDate();
+    private IChecker<Person> checker = new CheckerByDate();
 
     /**
      * @return Count of elements in list.
@@ -49,11 +47,6 @@ public class List {
                     break;
                 }
         length++;
-        try {
-            Configurator.getComparator();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
